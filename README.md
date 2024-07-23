@@ -1,3 +1,8 @@
+修改点:
+1. 仅保留vim
+2. 调整命令 文件路径 使用双引号包裹
+
+
 # Open with Vi/Vim/Nano
 
 Thanks to the [*Terminals in the editor area*][terminal-in-editor-area] feature, now you can effectively use Vi/Vim/Nano (or any other editor) as a code editor inside VS Code editor area. This extension makes that easier by letting you to select "Open with Vi/Vim/Nano..." command on the file explorer context menu.

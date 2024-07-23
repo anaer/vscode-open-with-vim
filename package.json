@@ -1,12 +1,12 @@
 {
-    "name": "vscode-open-with-vim",
-    "displayName": "Open with Vi/Vim/Nano",
-    "description": "Open files with Vi/Vim/Nano, in the editor area",
-    "version": "0.0.5",
-    "publisher": "babakks",
+    "name": "vscode-open-in-vim",
+    "displayName": "Open with Vim",
+    "description": "Open files with Vim, in the editor area",
+    "version": "24.723.1645",
+    "publisher": "anaer",
     "repository": {
         "type": "git",
-        "url": "https://github.com/babakks/vscode-open-with-vim"
+        "url": "https://github.com/anaer/vscode-open-with-vim"
     },
     "engines": {
         "vscode": "^1.64.0"
@@ -20,18 +20,13 @@
     "keywords": [
         "vi",
         "vim",
-        "nano",
         "open",
         "open with",
         "open in",
         "editor",
         "terminal",
-        "open with vi",
         "open with vim",
-        "open with nano",
-        "open in vi",
-        "open in vim",
-        "open in nano"
+        "open in vim"
     ],
     "main": "./out/extension.js",
     "icon": "images/icon.png",
@@ -39,17 +34,7 @@
         "menus": {
             "explorer/context": [
                 {
-                    "command": "vscode-open-with-vim.openWithVi",
-                    "group": "navigation",
-                    "when": "filesExplorerFocus"
-                },
-                {
                     "command": "vscode-open-with-vim.openWithVim",
-                    "group": "navigation",
-                    "when": "filesExplorerFocus"
-                },
-                {
-                    "command": "vscode-open-with-vim.openWithNano",
                     "group": "navigation",
                     "when": "filesExplorerFocus"
                 }
@@ -57,18 +42,8 @@
         },
         "commands": [
             {
-                "command": "vscode-open-with-vim.openWithVi",
-                "title": "Open with Vi...",
-                "enablement": "filesExplorerFocus"
-            },
-            {
                 "command": "vscode-open-with-vim.openWithVim",
-                "title": "Open with Vim...",
-                "enablement": "filesExplorerFocus"
-            },
-            {
-                "command": "vscode-open-with-vim.openWithNano",
-                "title": "Open with Nano...",
+                "title": "Open With Vim",
                 "enablement": "filesExplorerFocus"
             }
         ]

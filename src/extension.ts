@@ -3,15 +3,15 @@ import { basename } from 'node:path';
 
 export function activate(context: vscode.ExtensionContext) {
     let disposable = [
-        vscode.commands.registerCommand('vscode-open-with-vim.openWithVi', async (uri: vscode.Uri | undefined) => {
-            openWith('vi', uri ?? await getCurrentSelectedFile());
-        }),
+        // vscode.commands.registerCommand('vscode-open-with-vim.openWithVi', async (uri: vscode.Uri | undefined) => {
+            // openWith('vi', uri ?? await getCurrentSelectedFile());
+        // }),
         vscode.commands.registerCommand('vscode-open-with-vim.openWithVim', async (uri: vscode.Uri | undefined) => {
             openWith('vim', uri ?? await getCurrentSelectedFile());
         }),
-        vscode.commands.registerCommand('vscode-open-with-vim.openWithNano', async (uri: vscode.Uri | undefined) => {
-            openWith('nano', uri ?? await getCurrentSelectedFile());
-        }),
+        // vscode.commands.registerCommand('vscode-open-with-vim.openWithNano', async (uri: vscode.Uri | undefined) => {
+            // openWith('nano', uri ?? await getCurrentSelectedFile());
+        // }),
         vscode.window.onDidCloseTerminal(tryRemoveTerminalFromMap),
     ];
 
@@ -96,7 +96,7 @@ function getOpenWithCommand(editor: Editor, path: string, shellType: string): st
     if (shellType.match(/(pwsh|powershell|cmd)(\.exe)?/i)) {
         switch (editor) {
             case 'vi': return `vi '${escapedPath}'; exit`;
-            case 'vim': return `vim '${escapedPath}'; exit`;
+            case 'vim': return `vim "${escapedPath}"`;
             case 'nano': return `nano '${escapedPath}'; exit`;
         }
     }
