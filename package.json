@@ -1,8 +1,8 @@
 {
     "name": "vscode-open-in-vim",
-    "displayName": "Open with Vim",
+    "displayName": "Open With Vim",
     "description": "Open files with Vim, in the editor area",
-    "version": "24.723.1645",
+    "version": "24.724.1526",
     "publisher": "anaer",
     "repository": {
         "type": "git",

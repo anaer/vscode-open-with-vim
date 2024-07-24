@@ -96,7 +96,7 @@ function getOpenWithCommand(editor: Editor, path: string, shellType: string): st
     if (shellType.match(/(pwsh|powershell|cmd)(\.exe)?/i)) {
         switch (editor) {
             case 'vi': return `vi '${escapedPath}'; exit`;
-            case 'vim': return `vim "${escapedPath}"`;
+            case 'vim': return `vim "${escapedPath}" && exit`;
             case 'nano': return `nano '${escapedPath}'; exit`;
         }
     }
