@@ -12,6 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
         // vscode.commands.registerCommand('vscode-open-with-vim.openWithNano', async (uri: vscode.Uri | undefined) => {
             // openWith('nano', uri ?? await getCurrentSelectedFile());
         // }),
+        vscode.commands.registerCommand('vscode-open-with-vim.openWithNotepad', async (uri: vscode.Uri | undefined) => {
+            openWith('notepad', uri ?? await getCurrentSelectedFile(), 50);
+        }),
         vscode.window.onDidCloseTerminal(tryRemoveTerminalFromMap),
     ];
 
@@ -20,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() { }
 
-type Editor = 'vi' | 'vim' | 'nano';
+type Editor = 'vi' | 'vim' | 'nano' | 'notepad';
 type EditorUri = `${Editor}/${string}`;
 
 const map = new Map<vscode.Terminal, EditorUri>();
@@ -57,7 +60,7 @@ async function getCurrentSelectedFile(): Promise<vscode.Uri> {
 const PREVENT_DUPLICATE_EDITOR_URI_PAIRS = false;
 const SAFETY_TIMEOUT_MS = 500;
 
-function openWith(editor: Editor, uri: vscode.Uri) {
+function openWith(editor: Editor, uri: vscode.Uri, timeout: number = SAFETY_TIMEOUT_MS) {
     const editorUri = toEditorUri(editor, uri);
 
     if (PREVENT_DUPLICATE_EDITOR_URI_PAIRS) {
@@ -87,7 +90,7 @@ function openWith(editor: Editor, uri: vscode.Uri) {
     setTimeout(() => {
         terminal.sendText(getOpenWithCommand(editor, uri.fsPath, shellType));
         terminal.show();
-    }, SAFETY_TIMEOUT_MS);
+    }, timeout);
 }
 
 function getOpenWithCommand(editor: Editor, path: string, shellType: string): string {
@@ -98,6 +101,7 @@ function getOpenWithCommand(editor: Editor, path: string, shellType: string): st
             case 'vi': return `vi '${escapedPath}'; exit`;
             case 'vim': return `vim "${escapedPath}" && exit`;
             case 'nano': return `nano '${escapedPath}'; exit`;
+            case 'notepad': return `notepad "${escapedPath}" && exit`;
         }
     }
 
@@ -105,6 +109,7 @@ function getOpenWithCommand(editor: Editor, path: string, shellType: string): st
         case 'vi': return `exec vi '${escapedPath}'; exec exit`;
         case 'vim': return `exec vim '${escapedPath}'; exec exit`;
         case 'nano': return `exec nano '${escapedPath}'; exec exit`;
+        case 'notepad': return `exec vim '${escapedPath}'; exec exit`;
     }
 }
 

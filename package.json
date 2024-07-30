@@ -2,7 +2,7 @@
     "name": "vscode-open-in-vim",
     "displayName": "Open With Vim",
     "description": "Open files with Vim, in the editor area",
-    "version": "24.724.1526",
+    "version": "24.730.1617",
     "publisher": "anaer",
     "repository": {
         "type": "git",
@@ -37,6 +37,11 @@
                     "command": "vscode-open-with-vim.openWithVim",
                     "group": "navigation",
                     "when": "filesExplorerFocus"
+                },
+                {
+                    "command": "vscode-open-with-vim.openWithNotepad",
+                    "group": "navigation",
+                    "when": "filesExplorerFocus"
                 }
             ]
         },
@@ -44,6 +49,11 @@
             {
                 "command": "vscode-open-with-vim.openWithVim",
                 "title": "Open With Vim",
+                "enablement": "filesExplorerFocus"
+            },
+            {
+                "command": "vscode-open-with-vim.openWithNotepad",
+                "title": "Open With Notepad",
                 "enablement": "filesExplorerFocus"
             }
         ]
